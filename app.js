@@ -16,7 +16,7 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let userInput = prompt("Choose between rock, paper or scissors: ");
+    let userInput = "";
 
     if (userInput === null) {
         alert("Canceled. Refresh page to play again.");
@@ -40,59 +40,41 @@ function getHumanChoice() {
 
 }
 
+function playRound(humanChoice, computerChoice) {
+    switch (true) {
+        //Tie case
+        case humanChoice == computerChoice:
+            gameRound++;
+            console.log(`Round: ${gameRound}, Player Score: ${humanScore}, Computer Score: ${computerScore}`);
+            return `Tie! You both picked ${computerChoice}.`;
 
-function playGame() {
+            //Computer winning cases
+        case humanChoice == "rock" && computerChoice == "paper":
+        case humanChoice == "scissors" && computerChoice == "rock":
+        case humanChoice == "paper" && computerChoice == "scissors":
+            computerScore++;
+            gameRound++;
+            console.log(`Round: ${gameRound}, Player Score: ${humanScore}, Computer Score: ${computerScore}`);
+            return `Computer wins! ${computerChoice} beats ${humanChoice}.`;
 
-    //keep track of scores
-    let humanScore = 0;
-    let computerScore = 0
-    let gameRound = 0;
-
-    function playRound(humanChoice, computerChoice) {
-        switch (true) {
-
-            //Tie case
-            case humanChoice == computerChoice:
-                gameRound++;
-                console.log(`Round: ${gameRound}, Player Score: ${humanScore}, Computer Score: ${computerScore}`);
-                return `Tie! You both picked ${computerChoice}.`;
-
-                //Computer winning cases
-            case humanChoice == "rock" && computerChoice == "paper":
-            case humanChoice == "scissors" && computerChoice == "rock":
-            case humanChoice == "paper" && computerChoice == "scissors":
-                computerScore++;
-                gameRound++;
-                console.log(`Round: ${gameRound}, Player Score: ${humanScore}, Computer Score: ${computerScore}`);
-                return `Computer wins! ${computerChoice} beats ${humanChoice}.`;
-
-                //Player winning cases
-            case humanChoice == "rock" && computerChoice == "scissors":
-            case humanChoice == "paper" && computerChoice == "rock":
-            case humanChoice == "scissors" && computerChoice == "paper":
-                humanScore++;
-                gameRound++;
-                console.log(`Round: ${gameRound}, Player Score: ${humanScore}, Computer Score: ${computerScore}`);
-                return `Player wins! ${humanChoice} beats ${computerChoice}.`;
-        }
+            //Player winning cases
+        case humanChoice == "rock" && computerChoice == "scissors":
+        case humanChoice == "paper" && computerChoice == "rock":
+        case humanChoice == "scissors" && computerChoice == "paper":
+            humanScore++;
+            gameRound++;
+            console.log(`Round: ${gameRound}, Player Score: ${humanScore}, Computer Score: ${computerScore}`);
+            return `Player wins! ${humanChoice} beats ${computerChoice}.`;
     }
-
-    //play 5 rounds
-    for (let i = gameRound; i < 5; i++) {
-        let humanChoice = getHumanChoice();
-        let computerChoice = getComputerChoice();
-        console.log(playRound(humanChoice, computerChoice));
-    }
-
-    //display winner
-    if (humanScore > computerScore) {
-        alert(`You won ${humanScore} : ${computerScore} !`);
-    } else if (computerScore > humanScore) {
-        alert(`You lost ${humanScore} : ${computerScore} !`);
-    } else {
-        alert("You tied!");
-    }
-
 }
 
-playGame();
+function myAlert() {
+    console.log("test")
+}
+
+export {
+    getRandomNum,
+    getComputerChoice,
+    getHumanChoice,
+    playRound,
+};
