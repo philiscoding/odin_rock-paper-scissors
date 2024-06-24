@@ -70,7 +70,18 @@ function playRound(humanChoice, computerChoice) {
             gameRound++;
             return `Player wins! ${humanChoice} beats ${computerChoice}.Round: ${gameRound}, Player Score: ${humanScore}, Computer Score: ${computerScore}`;
     }
+
+
 }
+
+function checkWinner() {
+    if (humanScore === 5) {
+        return `Player wins!! End results: ${humanScore} : ${computerScore}. Refresh page to play again.`;
+    } else if (computerScore === 5) {
+        return `Computer wins!! End results: ${humanScore} : ${computerScore}. Refresh page to play again.` ;
+    }
+}
+
 
 
 export {
@@ -78,4 +89,5 @@ export {
     getComputerChoice,
     getHumanChoice,
     playRound,
+    checkWinner,
 };
