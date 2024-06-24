@@ -40,13 +40,18 @@ function getHumanChoice() {
 
 }
 
+//DELETE THIS
+let humanScore = 0;
+let computerScore = 0;
+let gameRound = 0;
+
 function playRound(humanChoice, computerChoice) {
     switch (true) {
         //Tie case
         case humanChoice == computerChoice:
             gameRound++;
-            console.log(`Round: ${gameRound}, Player Score: ${humanScore}, Computer Score: ${computerScore}`);
-            return `Tie! You both picked ${computerChoice}.`;
+            return `Tie! You both picked ${computerChoice}.
+             Round: ${gameRound}, Player Score: ${humanScore}, Computer Score: ${computerScore}`;
 
             //Computer winning cases
         case humanChoice == "rock" && computerChoice == "paper":
@@ -54,8 +59,8 @@ function playRound(humanChoice, computerChoice) {
         case humanChoice == "paper" && computerChoice == "scissors":
             computerScore++;
             gameRound++;
-            console.log(`Round: ${gameRound}, Player Score: ${humanScore}, Computer Score: ${computerScore}`);
-            return `Computer wins! ${computerChoice} beats ${humanChoice}.`;
+            return `Computer wins! ${computerChoice} beats ${humanChoice}.
+            Round: ${gameRound}, Player Score: ${humanScore}, Computer Score: ${computerScore}`;
 
             //Player winning cases
         case humanChoice == "rock" && computerChoice == "scissors":
@@ -63,14 +68,10 @@ function playRound(humanChoice, computerChoice) {
         case humanChoice == "scissors" && computerChoice == "paper":
             humanScore++;
             gameRound++;
-            console.log(`Round: ${gameRound}, Player Score: ${humanScore}, Computer Score: ${computerScore}`);
-            return `Player wins! ${humanChoice} beats ${computerChoice}.`;
+            return `Player wins! ${humanChoice} beats ${computerChoice}.Round: ${gameRound}, Player Score: ${humanScore}, Computer Score: ${computerScore}`;
     }
 }
 
-function myAlert() {
-    console.log("test")
-}
 
 export {
     getRandomNum,
